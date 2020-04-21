@@ -15,7 +15,7 @@ public struct ImageCacheKey: EnvironmentKey {
 
 extension EnvironmentValues {
     
-    /// Overrides imageCache get and set
+    /// Overrides ImageCache get and set
     public var imageCache: ImageCache {
         get { self[ImageCacheKey.self] }
         set { self[ImageCacheKey.self] = newValue }

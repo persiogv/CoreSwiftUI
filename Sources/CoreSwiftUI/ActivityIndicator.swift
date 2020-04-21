@@ -14,10 +14,17 @@ public struct ActivityIndicator: UIViewRepresentable {
     // MARK: Properties
     
     /// Animating flag
-    @Binding public var isAnimating: Bool
+    public var isAnimating: Binding<Bool>
     
     /// Activity indicator style
     public let style: UIActivityIndicatorView.Style
+    
+    // MARK: Initializer
+    
+    public init(isAnimating: Binding<Bool>, style: UIActivityIndicatorView.Style) {
+        self.isAnimating = isAnimating
+        self.style = style
+    }
     
     // MARK: View representable
     
@@ -26,6 +33,6 @@ public struct ActivityIndicator: UIViewRepresentable {
     }
 
     public func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicator>) {
-        isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
+        isAnimating.wrappedValue ? uiView.startAnimating() : uiView.stopAnimating()
     }
 }
